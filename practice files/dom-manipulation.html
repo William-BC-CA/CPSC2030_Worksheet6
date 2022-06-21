@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro to jQuery | DOM Manipulation</title>
+    <script src = "https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: arial;
+            background: #f4f4f4;
+            line-height: 1.5em;
+        }
+        header {
+            background: slategray;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px #000 solid;
+            margin-bottom: 10px;
+        }
+        #container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+        .myClass{
+            color: blue;
+            background: black;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Intro to jQuery | DOM Manipulation</h1>
+    </header>
+    <div id = "container"></div>
+    <button id = "btn1">Button 1</button>
+    <p class = "para1">This is a paragraph.</p>
+    <p class = "para2">This is the second paragraph.</p>
+    <div id = "myDiv"></div>
+    <input type = "text" id = "newItem">
+    <ul id = "list1">
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+        <li>List Item 3</li>
+        <li>List Item 4</li>
+    </ul>
+    <a href = "https://google.com">Google</a>
+    <ul id="list2"></ul>
+
+    <script>
+        $(document).ready(function(){
+            // Using jQuery's CSS Method to update one or more properties
+            $(".para1").css("color", "red");
+            $(".para2").css({color: 'blue', background: 'lightgray'})
+
+            // Adding and removing classes in jQuery
+            // $(".para1").addClass('myClass');
+            // $(".para1").removeClass('myClass');
+            $("#btn1").on("click", function(){
+                $(".para1").toggleClass("myClass");
+            })
+
+
+            // Using the .text() and .html() methods
+            // $("#myDiv").text("This is some text inside myDiv");
+            $("#myDiv").html("<h2>This is some text inside myDiv</h2>");
+
+
+            // Adding new DOM elements to the DOM tree using append(), prepend(), before(), after()
+            // $("#list1").append("<li>New item here</li>");
+            // $("#list1").prepend("<li>New item here</li>");
+            // Alternative way to write the same thing
+            // $("<li>New item here</li>").prependTo("#list1");
+            // $("#list1").before("<h2>BEFORE the ul</h2>");
+            // $("#list1").after("<h2>After! the ul</h2>");
+
+            // Using the .empty() and .detach() methods
+            // $("#list1").empty();
+            // $("#list1").detach();
+
+            // Adding/removing HTML attributes using attr() and removeAttr()
+            $("a").attr("target", "_blank");
+            $("a").removeAttr("target");
+
+
+            // Wrapping elements with other HTML elements
+            // $(".para1").wrap("<h1>");
+            $("p").wrap("<h1>");
+
+            // Listening for a keyup event and append to ul
+            $("#newItem").on("keyup", function(event){
+                let code = event.which;
+                if (code == 13){
+                    $("#list1").append("<li>" + event.target.value + "</li>");
+                }
+            })
+
+            // Looping through an array and appending elements
+            let newArr = ['a', 'b', 'c'];
+            $.each(newArr, function(i, val){
+                $("#list2").append("<li>" + val + "</li>")
+            })
+
+        })
+    </script>
+</body>
+</html>
