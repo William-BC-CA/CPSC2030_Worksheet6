@@ -1,0 +1,23 @@
+body {
+    background-color: gray;
+}
+
+nav ul li{
+    list-style-type: none;
+}
+
+nav ul a{
+    color: white;
+    text-decoration: none;
+    transition-property: font-size;
+    transition-duration: 1s;
+}
+
+nav ul a:hover{
+    text-decoration: underline;
+    font-size: 32px;
+}
+
+.wrapper {
+    margin: auto;
+}
